@@ -1,0 +1,31 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div >
+  Click on the below button to change the color of the grid
+</div>
+
+<button (click)="setColor()">Grid</button>
+
+<div class="grid-container" [style.background-color]="randomcolor">
+
+  <div class="grid-item" *ngFor="let i of itr" > 
+      <ng-template #htmlContent >
+          <div class="tooltip-inner" >Please click on the link to open the link.
+            <span class="close" (click)='t.close()' >
+              x
+            </span> 
+            <input type="checkbox" [checked]="checkValue" (change)="toggleTimer()">
+          </div>
+        </ng-template>
+    <span [ngbTooltip]="htmlContent" 
+      [autoClose]="false" [closeDelay]="closeDelay" placement="top" #t="ngbTooltip" 
+    (click)="t.open()">
+    <a href={{i}} target="_blank">{{i}}</a>
+  </span>
+    
+  </div>
+  
+  
+</div>
+
+
+<router-outlet></router-outlet>
